@@ -23,7 +23,7 @@ uses
   IdIOHandlerStack, IdSSL, IdSSLOpenSSL;
 
 type
-  TformularioCadastro = class(TForm)
+  TfrmCadastro = class(TForm)
     edtNome: TLabeledEdit;
     edtIdentidadde: TLabeledEdit;
     edtCPF: TLabeledEdit;
@@ -82,7 +82,7 @@ type
   end;
 
 var
-  formularioCadastro: TformularioCadastro;
+  frmCadastro: TfrmCadastro;
 
 implementation
 
@@ -91,7 +91,7 @@ uses
 
 {$R *.dfm}
 
-procedure TformularioCadastro.btnCadastroClick(Sender: TObject);
+procedure TfrmCadastro.btnCadastroClick(Sender: TObject);
 var email:string;
 begin
   lblmsg.Caption := '';
@@ -127,13 +127,13 @@ begin
    enviaEmail;
 end;
 
-procedure TformularioCadastro.btnLimparTudoClick(Sender: TObject);
+procedure TfrmCadastro.btnLimparTudoClick(Sender: TObject);
 begin
   limpaDadosPessoais;
   limpaEndereco;
 end;
 
-procedure TformularioCadastro.btnRemoverClick(Sender: TObject);
+procedure TfrmCadastro.btnRemoverClick(Sender: TObject);
 begin
   edtNome.Text := cdsDadosNome.Value;
   edtIdentidadde.Text := cdsDadosIdentidade.Value;
@@ -157,7 +157,7 @@ begin
   IRbtnRemover;
 end;
 
-procedure TformularioCadastro.edtCEPExit(Sender: TObject);
+procedure TfrmCadastro.edtCEPExit(Sender: TObject);
 var
   cep: string;
   resposta: TStringStream;
@@ -203,13 +203,13 @@ begin
     lblMSG.caption := 'CEP incompleto ou em branco';
 end;
 
-procedure TformularioCadastro.edtTelefoneKeyPress(Sender: TObject; var Key: Char);
+procedure TfrmCadastro.edtTelefoneKeyPress(Sender: TObject; var Key: Char);
 begin
   if not (Key in ['0'..'9', '(', ')']) then
     Key := #0;
 end;
 
-procedure TformularioCadastro.FormShow(Sender: TObject);
+procedure TfrmCadastro.FormShow(Sender: TObject);
 var dir, path:string;
 begin
   cdsDados.Close;
@@ -228,7 +228,7 @@ begin
   end;
 end;
 
-procedure TformularioCadastro.limpaEndereco;
+procedure TfrmCadastro.limpaEndereco;
 begin
   edtPais.Clear;
   edtEstado.Clear;
@@ -240,7 +240,7 @@ begin
   edtCEP.Clear;
 end;
 
-procedure TformularioCadastro.limpaDadosPessoais;
+procedure TfrmCadastro.limpaDadosPessoais;
 begin
   edtNome.Clear;
   edtCPF.Clear;
@@ -249,7 +249,7 @@ begin
   edtEmail.Clear;
 end;
 
-procedure TformularioCadastro.IRbtnRemover;
+procedure TfrmCadastro.IRbtnRemover;
 begin
   if cdsDados.RecordCount = 0 then
     btnRemover.Enabled := false
@@ -257,7 +257,7 @@ begin
     btnRemover.Enabled := true;
 end;
 
-procedure TformularioCadastro.createXML;
+procedure TfrmCadastro.createXML;
 var
   XML: IXMLDocument;
   root, node, inode: IXMLNode;
@@ -306,7 +306,7 @@ begin
   end;
 end;
 
-procedure TformularioCadastro.saveJson;
+procedure TfrmCadastro.saveJson;
 var jsonObject: TJSONObject;
     jsonArray: TJSONArray;
     jsonPair:TJSONPair;
@@ -337,7 +337,7 @@ begin
   end;
 end;
 
-procedure TformularioCadastro.readXML(path:string);
+procedure TfrmCadastro.readXML(path:string);
 var xml:TXMLDocument;
     root, child:IXMLNode;
     number:integer;
@@ -372,7 +372,7 @@ begin
   cdsDados.Open;
 end;
 
-procedure TformularioCadastro.enviaEmail;
+procedure TfrmCadastro.enviaEmail;
 var
     anexo: TIdAttachmentFile;
     usmtp, porta, email, senha, dnome, demail, assunto, afile:string;

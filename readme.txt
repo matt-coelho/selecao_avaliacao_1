@@ -1,3 +1,5 @@
+Teste Técnico InfoSistemas
+1.Utilizando Delphi
 2.Criar uma tela de cadastro de clientes, com os seguintes campos:
 -Dados do Cadastro:
 Nome, Identidade, CPF, Telefone, Email, Endereço, Cep, Logradouro,

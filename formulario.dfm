@@ -1,7 +1,7 @@
-object formularioCadastro: TformularioCadastro
+object frmCadastro: TfrmCadastro
   Left = 0
   Top = 0
-  Caption = 'JSON, XML, Email, ClientDataSet'
+  Caption = 'JSON, XML, Email, ClientDataSet - InfoSistemas'
   ClientHeight = 341
   ClientWidth = 534
   Color = clBtnFace
